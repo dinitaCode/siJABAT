@@ -19,6 +19,13 @@
                     <div class="card card-outline card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Detail Hasil Pencarian</h3>
+                            <?php if($this->session->userdata('role')=='direksi') { ?>
+                                <div class="box-tools"> 
+                                    <a href="<?=base_url('Rekomendasi/Cetak_Rekomendasi/'.encrypt_url($log->id_log).'/'.encrypt_url($jbt->id_jabatan))?>" class="btn btn-outline-primary btn-sm float-right" target="_blank">
+                                        <i class="fa fa-print"></i> .pdf
+                                    </a>
+                                </div>
+                            <?php } ?>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -42,7 +49,8 @@
                                                 <span class="info-box-number text-center"><?=$log->nama_lengkap?></span>
                                                 <span class="info-box-text lead">Similarity Tertinggi  : <b> <?=$log->nilai_max_sim?> </b></span>
                                             </div>
-                                        </div></h4>
+                                        </div>
+                                    </h4>
                                     <table class="table table-sm table-bordered">
                                         <tr>
                                             <td>\</td>

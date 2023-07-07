@@ -19,9 +19,6 @@
                     <div class="card card-outline card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Data History Rekomendasi</h3>
-                            <div class="card-tools">
-                                <a href="<?=base_url('Pencarian')?>" class="btn btn-primary"><i class="fas fa-search"></i> Rekomendasi Jabatan</a>
-                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -45,7 +42,8 @@
                                                 </td>
                                                 <td><?= $p->jabatan ?></td>
                                                 <td>
-                                                    <span class="lead text-purple"><b><?=$p->nilai_max_sim?></b></span>
+                                                    <b><?=$p->nama_lengkap?></b><br>
+                                                    <p class="lead text-purple"><b><?=$p->nilai_max_sim?></b></p>
                                                     <?php if ($user->role == 'direksi') { ?>
                                                         <a href="<?=base_url('Rekomendasi/Hasil_rekomendasi/'.$p->id_log.'/'.$p->id_jabatan)?>" class="btn btn-outline-primary btn-sm float-right">
                                                             <i class="far fa-folder-open"></i> DETAIL

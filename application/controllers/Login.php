@@ -77,7 +77,7 @@ class Login extends CI_Controller
 
 	function NotFound() {
 		$data['content'] = '404';
-		$this->load->view('themes/index', $data);
+		$this->load->view('theme/index', $data);
 	}
 
 	public function user()

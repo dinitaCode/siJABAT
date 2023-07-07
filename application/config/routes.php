@@ -7,6 +7,9 @@ $route['Logout'] = 'Login/Logout';
 $route['404_override'] = 'Login/NotFound';
 
 $route['Karyawan'] = 'Rekomendasi/Karyawan';
+$route['DetailKry/(:num)'] = 'Rekomendasi/DetailKry/$1';
+$route['KriteriaKry'] = 'Rekomendasi/KriteriaKry';
+$route['CancelFilterKry'] = 'Rekomendasi/CancelFilterKry';
 $route['Jabatan'] = 'Rekomendasi/Jabatan';
 $route['Kriteria'] = 'Rekomendasi/Kriteria';
 $route['Pencarian'] = 'Rekomendasi/Pencarian';

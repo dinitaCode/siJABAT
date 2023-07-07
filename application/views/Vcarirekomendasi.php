@@ -26,8 +26,8 @@
                                 <div class="form-group">
                                     <label>Jabatan</label>
                                     <div class="select2-purple">
-                                        <select class="select2" name="id_jabatan" data-dropdown-css-class="select2-purple" style="width: 100%;" required>
-                                        <option value="">--Pilih Jabatan--</option>
+                                        <select class="select2" id="pilih_jabatan" name="id_jabatan" data-dropdown-css-class="select2-purple" style="width: 100%;" required>
+                                        <option value="">- Pilih Jabatan -</option>
                                         <?php foreach ($jabatan as $j) { ?>
                                             <option value="<?=$j->id_jabatan?>"> <?=$j->jabatan?> </option>
                                         <?php } ?>
@@ -44,18 +44,16 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                                <?php foreach ($kriteria_kry as $k) { ?>
-                                                    <tr>
+                                                <tr>
                                                         <td>
-                                                            <div class="form-group">
-                                                                <div class="custom-control custom-checkbox">
+                                                            <div class="form-group" id="show_kandidat">
+                                                                <!-- <div class="custom-control custom-checkbox">
                                                                     <input class="custom-control-input custom-control-input-success custom-control-input-outline" type="checkbox" id="cek<?=$k->id_kry?>" name="karyawan[]" value="<?=$k->id_kry?>">
                                                                     <label for="cek<?=$k->id_kry?>" class="custom-control-label"><?=$k->nama_lengkap?></label>
-                                                                </div>
+                                                                </div> -->
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                <?php } ?>
                                             </tbody>
                                         </table>
                                         <!-- /.table -->
@@ -70,3 +68,30 @@
             </div>
         </div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type='text/javascript'>
+      $(document).ready(function() {
+        $('#pilih_jabatan').change(function() {
+          var id_jabatan = $(this).val();
+          $.ajax({
+            url: '<?= base_url("Rekomendasi/GetKandidat") ?>',
+            method: 'post',
+            data: {
+              id_jabatan: id_jabatan
+            },
+            dataType: 'json',
+            success: function(response) {
+              var html = '';
+              var i;
+              for (i = 0; i < response.length; i++) {
+                html += '<div class="custom-control custom-checkbox">'+
+                        '<input class="custom-control-input custom-control-input-success custom-control-input-outline" id="cek' + response[i].id_kry +'" type="checkbox" name="karyawan[]" value="' + response[i].id_kry +'">' +
+                        '<label for="cek' + response[i].id_kry +'" class="custom-control-label">' + response[i].nama_lengkap + '</label></div>';
+              }
+              $('#show_kandidat').html(html);
+            }
+          });
+        });
+      });
+    </script>

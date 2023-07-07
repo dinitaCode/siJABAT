@@ -46,7 +46,9 @@
                                                     <?php $jk = ($p->jk=='L') ? '<i class="fas fa-male"></i> Laki-laki' : '<i class="fas fa-female"></i> Perempuan' ; echo $jk;?>
                                                 </td>
                                                 <td>
-                                                    
+                                                    <a class="btn btn-sm btn-block btn-primary" href="<?=base_url('Rekomendasi/DetailKry/'. encrypt_url($p->id_kry))?>">
+                                                        <i class="far fa-folder-open"></i> Detail
+                                                    </a>
                                                 </td>
                                             </tr>
                                         <?php } ?>
